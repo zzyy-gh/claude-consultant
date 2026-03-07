@@ -32,8 +32,20 @@ Use the **Agent tool** to spawn each specialist in parallel. Each agent gets:
 - Any relevant prior knowledge from the store
 - Instructions to push their perspective boldly — balance is someone else's job
 
-### 4. Consolidate
-After all specialists respond, synthesize their outputs:
+### 4. Emergent Exploration
+
+As specialist responses come in, evaluate whether new questions or topics have surfaced that were not anticipated in the initial plan. If so, **spawn additional specialist agents** to address them — do not limit analysis to the initial set of perspectives.
+
+Triggers for spawning new agents mid-consultation:
+- A specialist raises a dimension that no other specialist covers
+- Two specialists conflict in a way that a third perspective could resolve or deepen
+- A surprising connection to a different domain emerges that warrants its own analysis
+- The user's question turns out to have a hidden layer that the initial framing missed
+
+When spawning mid-consultation agents, briefly note to the user what emerged and why a new perspective is being added.
+
+### 5. Consolidate
+After all specialists (initial and emergent) respond, synthesize their outputs:
 - Where do they **agree**? (high-confidence insights)
 - Where do they **conflict**? (interesting tensions — don't paper over these)
 - What deeper patterns emerge across perspectives?
@@ -41,7 +53,7 @@ After all specialists respond, synthesize their outputs:
 
 Present the consolidated response to the user. Be direct and useful.
 
-### 5. Extract & Store Learnings
+### 6. Extract & Store Learnings
 After delivering the response, extract abstract principles that could transfer to completely different future scenarios. Use:
 ```
 python knowledge.py store '[{"encoded": "<compressed principle, max 200 chars>", "tags": ["<abstract_tag>", ...], "confidence": <0.0-1.0>}]'

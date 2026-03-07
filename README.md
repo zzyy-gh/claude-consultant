@@ -7,8 +7,9 @@ A multi-perspective analysis system built on Claude Code. Instead of answering f
 1. **You ask a question** — anything: strategy, technical decisions, life choices, analysis
 2. **Perspectives are chosen** — the orchestrator picks 2-5 specialist viewpoints that create productive tension (e.g., a game theorist, a stoic philosopher, a devil's advocate)
 3. **Specialists analyze in parallel** — each pushes their perspective boldly without trying to be balanced
-4. **Consolidation** — agreements, conflicts, and deeper patterns are synthesized into a direct response
-5. **Learning** — abstract principles are extracted and stored for future tasks
+4. **Emergent exploration** — as responses come in, new agents are spawned if unexpected topics or tensions surface that warrant additional perspectives. The analysis is not limited to the initial plan.
+5. **Consolidation** — agreements, conflicts, and deeper patterns across all specialists (initial and emergent) are synthesized into a direct response
+6. **Learning** — abstract principles are extracted and stored for future tasks
 
 The knowledge store accumulates compressed, domain-agnostic principles. A lesson learned from biology might later inform a business decision. The stored forms are optimized for the agent, not for human readability — but the agent can explain them on request.
 

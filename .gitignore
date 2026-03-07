@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 knowledge_store/principles.json
+conversations/
+assets/
+.claude/

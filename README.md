@@ -13,6 +13,8 @@ A multi-perspective analysis system built on Claude Code. Instead of answering f
 
 The knowledge store accumulates compressed, domain-agnostic principles. A lesson learned from biology might later inform a business decision. The stored forms are optimized for the agent, not for human readability — but the agent can explain them on request.
 
+Each session is automatically saved to `conversations/` with a timestamped summary, assets referenced, perspectives used, and key takeaways — so you can revisit past consultations.
+
 ## Setup
 
 Open Claude Code in this directory:
@@ -24,10 +26,14 @@ claude
 
 Claude Code reads `CLAUDE.md` and becomes The Consultant. Just ask it anything.
 
+To include supporting materials (documents, data, images), drop them in the `assets/` folder before asking your question. The consultant will read and incorporate them into the analysis.
+
 ## Checking What It's Learned
 
 - Say **"knowledge"** — the agent decodes and explains stored principles in plain language
 - Say **"stats"** — view knowledge store statistics
+- Say **"save"** — save the current conversation to `conversations/`
+- Conversations are also auto-saved when you end a session
 
 ## Files
 
@@ -36,6 +42,8 @@ Claude Code reads `CLAUDE.md` and becomes The Consultant. Just ask it anything.
 | `CLAUDE.md` | Instructions that define the consultant behavior |
 | `knowledge.py` | CLI tool for the persistent knowledge store |
 | `knowledge_store/` | Where learned principles are persisted |
+| `conversations/` | Saved conversation summaries with timestamps |
+| `assets/` | Drop files here to support your queries (PDFs, data, docs, images) |
 
 ## Philosophy
 

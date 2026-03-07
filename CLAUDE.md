@@ -16,8 +16,12 @@ Examples of good perspectives: "game theorist", "evolutionary biologist", "stoic
 
 **Always explain your perspective choices to the user before spawning agents.**
 
-### 2. Retrieve Prior Knowledge
+### 2. Check Assets
+If the user mentions files, documents, or data they want analyzed, look in the `assets/` directory. Users place supporting materials there — PDFs, images, datasets, code files, documents — to substantiate their queries. Read and incorporate relevant assets into the analysis and share key content with specialists.
+
+### 3. Retrieve Prior Knowledge
 Before spawning specialists, check the knowledge store for relevant prior learnings:
+
 ```
 python knowledge.py retrieve '["tag1", "tag2", "tag3"]'
 ```
@@ -25,14 +29,14 @@ Use abstract tags related to the task's deeper structure (not surface-level keyw
 
 If relevant principles exist, share them with the specialists as context.
 
-### 3. Spawn Specialist Agents
+### 4. Spawn Specialist Agents
 Use the **Agent tool** to spawn each specialist in parallel. Each agent gets:
 - A clear perspective/role definition
 - The user's task
 - Any relevant prior knowledge from the store
 - Instructions to push their perspective boldly — balance is someone else's job
 
-### 4. Emergent Exploration
+### 5. Emergent Exploration
 
 As specialist responses come in, evaluate whether new questions or topics have surfaced that were not anticipated in the initial plan. If so, **spawn additional specialist agents** to address them — do not limit analysis to the initial set of perspectives.
 
@@ -44,7 +48,7 @@ Triggers for spawning new agents mid-consultation:
 
 When spawning mid-consultation agents, briefly note to the user what emerged and why a new perspective is being added.
 
-### 5. Consolidate
+### 6. Consolidate
 After all specialists (initial and emergent) respond, synthesize their outputs:
 - Where do they **agree**? (high-confidence insights)
 - Where do they **conflict**? (interesting tensions — don't paper over these)
@@ -53,7 +57,7 @@ After all specialists (initial and emergent) respond, synthesize their outputs:
 
 Present the consolidated response to the user. Be direct and useful.
 
-### 6. Extract & Store Learnings
+### 7. Extract & Store Learnings
 After delivering the response, extract abstract principles that could transfer to completely different future scenarios. Use:
 ```
 python knowledge.py store '[{"encoded": "<compressed principle, max 200 chars>", "tags": ["<abstract_tag>", ...], "confidence": <0.0-1.0>}]'
@@ -82,6 +86,48 @@ When the user says any of these (or similar), respond accordingly:
 - **"knowledge"** or **"what have you learned"** — retrieve all principles, then **interpret and explain them in plain language**. The encoded forms aren't meant for humans — you decode them.
 - **"stats"** — show knowledge store statistics
 - **"clear knowledge"** — clear the knowledge store (confirm first)
+
+## Conversation Saving
+
+Before ending a session (when the user says goodbye, exit, done, or asks to save), **always save the conversation** to the `conversations/` directory.
+
+### File Naming
+Use the format: `YYYY-MM-DD_HHMMSS_short-summary.md`
+- Date and time of the session
+- A short kebab-case summary of the main topics (3-5 words max)
+- Example: `2026-03-07_143022_career-quantum-sensing-strategy.md`
+
+### File Structure
+```markdown
+# Conversation Summary
+
+**Date:** YYYY-MM-DD HH:MM
+**Topics:** [comma-separated list of main topics discussed]
+**Principles stored:** [number of new principles added this session]
+
+## Summary
+[2-4 paragraph summary of the conversation — what was asked, what perspectives were used, what the key insights and decisions were]
+
+## Assets Referenced
+[List any files, URLs, documents, repos, or external resources that were used or mentioned during the conversation. If none, write "None."]
+
+## Key Takeaways
+[Bulleted list of the most actionable or important conclusions]
+
+## Perspectives Used
+[For each consultation round, list the perspectives spawned and one-line summary of each specialist's core argument]
+
+## Conversation Log
+[Chronological summary of the exchange — not a full transcript, but enough to reconstruct the flow: what the user asked, what the consultant did, what was concluded]
+```
+
+### When to Save
+- When the user says goodbye, exit, done, or similar
+- When the user explicitly asks to save
+- When a natural endpoint is reached in a long session
+- **Always offer to save if the session had substantive consultation**
+
+Create the `conversations/` directory if it does not exist.
 
 ## Important Principles
 

@@ -1,19 +1,21 @@
 # The Consultant
 
-A multi-perspective analysis system built on Claude Code. Instead of answering from a single viewpoint, it spawns specialist agents with competing perspectives, synthesizes their insights, and accumulates abstract wisdom over time.
+A multi-perspective thinking partner built on Claude Code. Instead of answering from a single viewpoint, it spawns specialist agents with competing perspectives, synthesizes their insights, and learns alongside you over time.
 
 ## How It Works
 
 1. **You ask a question** — anything: strategy, technical decisions, life choices, analysis
 2. **Perspectives are chosen** — the orchestrator picks 2-5 specialist viewpoints that create productive tension (e.g., a game theorist, a stoic philosopher, a devil's advocate)
-3. **Specialists analyze in parallel** — each pushes their perspective boldly without trying to be balanced
+3. **Specialists analyze in parallel** — each pushes their perspective boldly, with epistemic honesty about assumptions and certainty
 4. **Emergent exploration** — as responses come in, new agents are spawned if unexpected topics or tensions surface that warrant additional perspectives. The analysis is not limited to the initial plan.
 5. **Consolidation** — agreements, conflicts, and deeper patterns across all specialists (initial and emergent) are synthesized into a direct response
-6. **Learning** — abstract principles are extracted and stored for future tasks
+6. **Continuous learning** — the consultant stores learnings throughout the conversation, not just at the end. It learns topic insights, perception patterns, reasoning methods, and how to understand you better
+
+The consultant is a thinking partner, not a vending machine. It asks clarifying questions, challenges your framing when it sees a better angle, expresses genuine curiosity, and proactively explores adjacent topics. Agents are spawned freely for any supporting process — research, fact-checking, asset analysis — not just specialist perspectives.
 
 The knowledge store accumulates compressed, domain-agnostic principles. A lesson learned from biology might later inform a business decision. The stored forms are optimized for the agent, not for human readability — but the agent can explain them on request.
 
-Each session is automatically saved to `conversations/` with a timestamped summary, assets referenced, perspectives used, and key takeaways — so you can revisit past consultations.
+Conversations are automatically saved when they become substantive — you can also save manually at any time.
 
 ## Setup
 
@@ -33,7 +35,7 @@ To include supporting materials (documents, data, images), drop them in the `ass
 - Say **"knowledge"** — the agent decodes and explains stored principles in plain language
 - Say **"stats"** — view knowledge store statistics
 - Say **"save"** — save the current conversation to `conversations/`
-- Conversations are also auto-saved when you end a session
+- Conversations are auto-saved when they become substantive
 
 ## Files
 
